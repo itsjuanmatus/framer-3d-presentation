@@ -1,2 +1,7 @@
-# framer-3d-button
-Created with CodeSandbox
+# Framer 3D Animation
+
+To run the project:
+
+``` yarn start ```
+
+

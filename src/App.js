@@ -3,7 +3,6 @@ import { Suspense, useState } from 'react';
 import { StarIcon } from './StarIcon';
 import './styles.css';
 
-// Ported from https://codepen.io/popmotion/pen/oNGxjpr?editors=1111
 export default function App() {
   const [isHover, setIsHover] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
