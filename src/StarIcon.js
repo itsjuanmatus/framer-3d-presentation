@@ -4,7 +4,7 @@ import { motion } from 'framer-motion/three';
 import { degreesToRadians } from 'popmotion'; // this will be used to convert degrees to radians
 
 export function StarIcon({ isLiked, isHover }) {
-  
+
   const { nodes } = useGLTF('/star-icon.glb'); // this will load the gltf file
 
   const lights = [
@@ -79,71 +79,8 @@ export function StarIcon({ isLiked, isHover }) {
           />
         </motion.mesh>
 
-        {/*         <Torus animate={animate} variants={variants} />*/}
       </group>
     </Canvas>
   );
 }
 
-function Torus({ animate, variants }) {
-  return (
-    <motion.mesh
-      scale={1}
-      rotation={
-        // this references the eulerAngles property of the mesh
-        [
-          0, // representing the tilt of the star in radians ( 90 degrees ) x axis
-          degreesToRadians(360), // y axis - in this case ,
-          0, // representing the spin of the star in radians ( 360 degrees ) z axis
-        ]
-      }
-      variants={{
-        unliked: {
-          x: [0, 0],
-          y: [0, 0],
-          scale: 0.9,
-        },
-        liked: {
-          x: 4,
-          y: [0, -1.5, 2], // this is a spring animation that will move the mesh down and up over time
-          scale: 0.9,
-          transition: { duration: 0.5 },
-        },
-        hover: {
-          // TORUS ROTATION
-          rotateY: 0,
-          rotateX: 0,
-          scale: 1.3,
-          transition: {
-            rotateY: { duration: 4.5, ease: 'linear', repeat: Infinity },
-          },
-        },
-      }}
-      animate={animate}
-    >
-      {/*  <torusGeometry args={[0.2, 0.1, 10, 50]} />
-
-      <meshPhongMaterial
-        color="yellow" // the color of the mesh
-        emissive="yellow" // Emissive (light) color of the material, essentially a solid color unaffected by other lighting. Default is black.
-        // matte material
-        specular="#000" // This defines how shiny the material is and the color of its shine.
-        shininess="100" // the shininess of the mesh (0 is matte, 100 is shiny)
-      /> */}
-
-      <sphereGeometry
-        args={[
-          0.35, // radius
-          10, // widthSegments
-          10, // heightSegments
-        ]}
-      />
-      <meshPhongMaterial // the material for the mesh
-        color={'#343434'} // the color of the mesh
-        emissive="#343434" // Emissive (light) color of the material, essentially a solid color unaffected by other lighting. Default is black.
-        specular="#fff" // This defines how shiny the material is and the color of its shine.
-        shininess="10" // the shininess of the mesh (0 is matte, 100 is shiny)
-      />
-    </motion.mesh>
-  );
-}
