@@ -30,7 +30,7 @@ export function StarIcon({ isLiked, isHover }) {
       rotateY: 0.3,
       scale: 1.3,
       transition: {
-        rotateZ: { duration: 1.5, ease: 'linear', repeat: Infinity },
+        rotateZ: { duration: 1.5, ease: 'linear', repeat: Infinity }, // this will rotate the mesh in a circle
       },
     },
   };
@@ -44,12 +44,13 @@ export function StarIcon({ isLiked, isHover }) {
         fov: 45, // the field of view of the camera, in degrees
       }}
     >
+
       {lights.map(([x, y, z, intensity], i) => (
         <pointLight
           key={i}
-          intensity={intensity}
-          position={[x / 8, y / 8, z / 8]}
-          color="white"
+          intensity={intensity} // the intensity of the light
+          position={[x / 8, y / 8, z / 8]} // x, y, z position of the light
+          color="white" // the color of the light
         />
       ))}
       <group // a group is a container for other objects in the scene
@@ -57,6 +58,7 @@ export function StarIcon({ isLiked, isHover }) {
                           group is removed from the scene, 
                         that is why we set it to null, so it won't be called */
       >
+
         <motion.mesh // a mesh is not more than a single geometry + material combination
           geometry={nodes.Star.geometry} // a geometry is a collection of vertices and faces
           rotation={
@@ -83,4 +85,3 @@ export function StarIcon({ isLiked, isHover }) {
     </Canvas>
   );
 }
-
